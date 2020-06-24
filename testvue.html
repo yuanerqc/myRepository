@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" :value="start" @click='startRoll'>
+        <input type="button" :value="stop" @click='stopRoll'>
+        <p>{{ content }}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+              start:'开始',
+              stop:'结束',
+              content:'加油学习！aaaa',
+              intervalID:null
+            },
+            methods:{
+                startRoll:function(){
+                    if(this.intervalID != null ) return;
+                    this.intervalID = setInterval(function(){
+                        var str = vm.content;
+                        var first = str.substring(0,1);
+                        var end = str.substring(1);
+                        vm.content = end+first;
+                    },500)
+                },
+                stopRoll:function(){
+                    clearInterval(this.intervalID);
+                    this.intervalID = null;
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

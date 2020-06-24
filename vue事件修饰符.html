@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        #box1{
+            width: 300px;
+            height: 300px;
+            background-color:brown;
+        }
+        #box2{
+            width: 200px;
+            height: 200px;
+            background-color:green;
+        }
+        #box3{
+            width: 100px;
+            height: 100px;
+            background-color:blue;
+        }
+    </style>
+
+
+
+</head>
+<body>
+    <div id="box1" @click="divHandler">
+        <div id="box2" @click.stop="divHandler">
+            <div id="box3" @click="divHandler">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:"#box1",
+            methods:{
+                divHandler:function(){
+                    console.log('触发');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
